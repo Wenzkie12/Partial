@@ -1,0 +1,97 @@
+/* General Styling */
+:root {
+    --base-clr: #f3f7f6;
+    --line-clr: #96c4d1;
+    --hover-clr: #93adb4;
+    --text-clr: #080b0a;
+    --accent-clr: #96c4d1;
+    --secondary-text-clr: #a6c1c1;
+    --primary: #749f8c;
+}
+
+
+/* Container */
+.py-12 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+}
+
+/* Card Styling */
+.card {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 25px;
+    max-width: 500px;
+    width: 100%;
+    margin: 5px;
+}
+
+.card-header {
+    font-size: 20px;
+    font-weight: 600;
+    border-bottom: 2px solid var(--line-clr);
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Back Button */
+.btn-role-back {
+    background: var(--primary);
+    color: var(--text-clr);
+    padding: 8px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-role-back:hover {
+    background: var(--hover-clr);
+    color: white;
+}
+
+/* Form Styling */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Input Fields */
+input[type="text"] {
+    width: auto;
+    padding: 10px;
+    border: 2px solid var(--line-clr);
+    border-radius: 5px;
+    font-size: 16px;
+    outline: none;
+    transition: 0.3s;
+}
+
+input[type="text"]:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 5px rgba(116, 159, 140, 0.5);
+}
+
+/* Submit Button */
+.btn {
+    background: var(--primary);
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background: var(--hover-clr);
+}

@@ -1,0 +1,132 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+:root{
+    --text: #0a0b0a;
+    --background: #f6f9f7;
+    --primary: #69ab80;
+    --secondary: #95d0aa;
+    --accent: #69ce8e;
+    
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--background);
+    font-family: 'Poppins', sans-serif;
+}
+
+header {
+    height: 75px;
+    background:var(--background);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    padding: 0 20px;
+}
+
+ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+ul li a {
+    text-decoration: none;
+    padding: 0 10px;
+    color: var(--text);
+    display: inline-block;
+}
+
+li a::after {
+    content: '';
+    display: block;
+    height: 4px;
+    width: 0;
+    background: var(--primary);
+    transition: 0.5s;
+}
+
+li a:hover::after {
+    width: 100%;
+}
+
+main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: calc(100vh - 75px);
+    padding: 20px;
+    flex-wrap: wrap;
+    text-align: center;
+}
+
+.content-left {
+    width: 50%;
+    max-width: 500px;
+    color: var(--text);
+    text-align: start;
+    
+}
+
+.content-right {
+    width: 50%;
+    max-width: 500px;
+    display: flex;
+    justify-content: center;
+
+}
+
+.model {
+    width: 100%;
+    height: auto;
+}
+
+.logo {
+    margin-left: 20px;
+}
+
+button.signup-btn {
+    background: var(--accent);
+    color: var(--text);
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+button.signup-btn:hover {
+    background:var(--secondary);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        height: auto;
+        padding: 10px 0;
+    }
+    
+    nav ul {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
+
+    main {
+        flex-direction: column;
+    }
+
+    .content-left, .content-right {
+        width: 100%;
+        max-width: none;
+    }
+}

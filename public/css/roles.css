@@ -1,0 +1,134 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+:root{
+  --base-clr: #f3f7f6;
+  --line-clr: #96c4d1;
+  --hover-clr: #93adb4;
+  --text-clr: #080b0a;
+  --accent-clr: #96c4d1;
+  --secondary-text-clr: #a6c1c1;
+  --primary:#749f8c;
+}
+
+.role-container{
+    min-height: 100vh;
+    background-color: var(--base-clr) ;
+}
+
+.role-header{
+    margin: 20px;
+    padding: 10px;
+    gap: 10px;
+}
+
+.role-grid{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-rows: auto 1fr;
+    gap: 20px;
+}
+
+.role-card {
+    display: grid;
+    place-items: center;
+    background: var(--secondary-text-clr);
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.role-card h4 {
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--text-clr);
+    text-transform: uppercase;
+}
+
+.btn-role {
+    background: var(--primary);
+    color: white;
+    padding: 8px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    text-align: center;
+    transition: 0.3s;
+    display: block;
+    gap: 10px;
+    margin: 10px;
+}
+
+button.btn-role {
+    width: 100%;
+    border: none;
+    cursor: pointer;
+}
+
+
+
+.btn-role-add{
+    background: var(--primary);
+    color: white;
+    padding: 8px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    text-align: center;
+    transition: 0.3s;
+    display: block;
+    outline: none;
+    border: none;
+}
+
+.status{
+    background: var(--);
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.modal { 
+    display: none; 
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%; 
+    background: rgba(0,0,0,0.5); 
+    z-index: 1000; /* Ensures modal is above other elements */
+}
+
+.modal-content { 
+    background: var(--accent-clr); 
+    width: 500px; 
+    height: 500px;
+    padding: 30px; 
+    border-radius: 12px; 
+    position: relative;
+    display: flex;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+
+.modal .close { 
+    float: right; 
+    font-size: 24px; 
+    cursor: pointer; 
+}
+
+.modal .btn {  /* Scoped button styles to avoid affecting sidebar */
+    background: #749f8c; 
+    color: white; 
+    padding: 10px; 
+    border-radius: 5px; 
+    border: none; 
+    cursor: pointer; 
+}
+
+.modal .btn:hover { 
+    background: #93adb4; 
+}
+
+.modal .x{
+    display: flex;
+    float: right;
+}
+
