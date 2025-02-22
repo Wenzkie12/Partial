@@ -32,8 +32,9 @@ class ReservationController extends Controller
             'reservation_date' => $request->reservation_date,
         ]);
 
-     
+        // Store reservation_id in UserBookTracking
         UserBookTracking::create([
+            'reservation_id' => $reservation->id,
             'user_id' => Auth::id(),
             'book_id' => $book->id,
             'status' => 'pending',
@@ -43,6 +44,29 @@ class ReservationController extends Controller
         $book->decrement('quantity');
 
         return redirect()->back()->with('success', 'Book reserved successfully.');
+    }
+
+    public function cancelReservation($id)
+    {
+        $reservation = Reservation::find($id);
+
+        if (!$reservation) {
+            return redirect()->back()->with('error', 'Reservation not found.');
+        }
+
+        // Return book quantity
+        $reservation->book->increment('quantity');
+
+        // Update UserBookTracking status to canceled
+        UserBookTracking::where('reservation_id', $reservation->id)
+            ->update([
+                'status' => 'canceled',
+                'canceled_at' => now(),
+            ]);
+
+        $reservation->delete();
+
+        return redirect()->back()->with('success', 'Reservation canceled successfully.');
     }
 
 

@@ -9,17 +9,18 @@ class UserBookTracking extends Model
 {
     use HasFactory;
 
-    protected $table = 'user_book_tracking';
+    protected $table = 'user_book_tracking'; // Fix the table name here
 
     protected $fillable = [
-        'user_id', 
-        'book_id', 
-        'status', 
-        'reservation_date', 
-        'claimed_at', 
-        'returned_at', 
-        'remaining_time'
+        'reservation_id', 'user_id', 'book_id', 'status',
+        'reservation_date', 'claimed_at', 'returned_at', 'canceled_at'
     ];
+
+    public function reservation()
+    {
+        return $this->belongsTo(Reservation::class, 'reservation_id');
+    }
+    
 
     public function user()
     {
@@ -31,3 +32,6 @@ class UserBookTracking extends Model
         return $this->belongsTo(Book::class);
     }
 }
+
+
+

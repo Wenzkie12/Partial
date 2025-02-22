@@ -11,9 +11,19 @@ class StaffController extends Controller
 {
     public function reservationList()
     {
-        $reservations = Reservation::with(['user', 'book'])->get();
+        $reservations = Reservation::with(['user', 'book'])
+            ->whereHas('userBookTracking', function ($query) {
+                $query->where('status', '!=', 'canceled'); // Exclude canceled reservations
+            })
+            ->get();
+    
+        if ($reservations->isEmpty()) {
+            return back()->with('error', 'No reservations found.');
+        }
+    
         return view('staff.reservation-list', compact('reservations'));
     }
+    
 
     public function toReturnList()
 {

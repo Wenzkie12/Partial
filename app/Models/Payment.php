@@ -9,11 +9,24 @@ class Payment extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['user_id', 'payment_amount', 'payment_date'];
+    protected $fillable = ['user_id', 'payment_amount', 'reference_number', 'payment_date'];
 
-    // Relationship to the User model
-    public function user()
+    protected static function boot()
     {
-        return $this->belongsTo(User::class);
+        parent::boot();
+
+        static::creating(function ($payment) {
+            $payment->reference_number = self::generateReferenceNumber();
+        });
+    }
+
+    private static function generateReferenceNumber()
+    {
+        do {
+            $reference = str_pad(mt_rand(0, 9999999999999), 13, '0', STR_PAD_LEFT);
+        } while (self::where('reference_number', $reference)->exists());
+
+        return $reference;
     }
 }
+

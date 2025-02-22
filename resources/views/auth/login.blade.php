@@ -10,7 +10,7 @@
     </header>
     <main>
         <div class="content-left">
-            <img src={{ asset('image/new.svg') }} alt="model" class="model">
+            <img src={{ asset('image/login.svg') }} alt="model" class="model">
         </div>
         <div class="content-right">
             <form method="POST" action="{{ route('login') }}">

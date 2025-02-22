@@ -6,14 +6,15 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\DB;
-
+use Illuminate\Support\Facades\Auth;
 class UserController extends Controller
 {
     public function index()
-    {
-        $users = User::all();
-        return view('management.index', ['users' => $users]);
-    }
+{
+    $users = User::all();
+    return view('management.index', ['users' => $users]);
+}
+
 
     public function store(Request $request)
     {
@@ -85,4 +86,12 @@ class UserController extends Controller
 
     return view('management.index', compact('users'))->with('search', $search);
 }
+
+public function personalInfo()
+{
+    $user = Auth::user(); // Get the logged-in user
+
+    return view('user.personal', compact('user'));
+}
+
 }

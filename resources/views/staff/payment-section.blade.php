@@ -1,6 +1,5 @@
 <x-app-layout>
     @section('content')
-    <link rel="stylesheet" href="{{ asset('css/books.css') }}">
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
         <h2>Payment Section - Users with Penalties</h2>
         <table>
@@ -12,7 +11,7 @@
                 </tr>
             </thead>
             <tbody>
-                @forelse ($users as $user)
+                @foreach ($users as $user)
                     <tr>
                         <td>{{ $user->name }}</td>
                         <td>{{ number_format($user->penalty, 2) }} PHP</td>
@@ -22,11 +21,7 @@
                             </button>
                         </td>
                     </tr>
-                @empty
-                    <tr>
-                        <td colspan="3">No users with penalties.</td>
-                    </tr>
-                @endforelse
+                @endforeach
             </tbody>
         </table>
     </div>
@@ -57,7 +52,6 @@
         document.getElementById('paymentPopup').style.display = 'none';
     }
     </script>
-    
     @endsection
     </x-app-layout>
     

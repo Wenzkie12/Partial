@@ -24,4 +24,4 @@ Route::post('/to-return-list/{id}/return', [ReservationController::class, 'retur
 Route::get('/staff/penalty-list', [PenaltyController::class, 'index'])->name('staff.penalty-list');
 Route::get('/staff/payment-section', [StaffController::class, 'usersWithPenalties'])->name('staff.payment-section');
 Route::get('/staff/payment-section', [PaymentController::class, 'index'])->name('staff.payment-section');
-    Route::post('/staff/payment/{userId}', [PaymentController::class, 'store'])->name('staff.payment.store');
+Route::post('/staff/payment/{userId}', [PaymentController::class, 'store'])->name('staff.payment.store');

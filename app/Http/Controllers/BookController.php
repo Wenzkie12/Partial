@@ -35,7 +35,7 @@ class BookController extends Controller
 
         $book = Book::create($request->all());
 
-        // Ensure user is authenticated before logging
+
         if (Auth::check()) {
             $user = Auth::user();
 
@@ -68,7 +68,7 @@ class BookController extends Controller
 
         $book->update($request->all());
 
-        // Log the update action
+    
         if (Auth::check()) {
             $user = Auth::user();
 
@@ -101,5 +101,23 @@ class BookController extends Controller
         $book->delete();
 
         return redirect()->route('book-management')->with('success', 'Book deleted successfully.');
+    }
+
+    public function search(Request $request)
+    {
+        $query = $request->input('search');
+
+        if (empty($query)) {
+            return redirect()->route('book-management')->with('message', 'Please enter a search term.');
+        }
+
+     
+        $books = Book::where('name', 'like', '%' . $query . '%')
+                     ->orWhere('author', 'like', '%' . $query . '%')
+                     ->orWhere('category', 'like', '%' . $query . '%')
+                     ->orWhere('date_published', 'like', '%' . $query . '%')
+                     ->paginate(10);
+
+        return view('management.book-management.index', compact('books'))->with('search', $query);
     }
 }

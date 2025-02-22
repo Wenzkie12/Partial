@@ -12,7 +12,7 @@
     
     <main>
         <div class="content-left">
-            <img src="{{ asset('image/new.svg') }}" alt="model" class="model">
+            <img src="{{ asset('image/signin.svg') }}" alt="model" class="model">
         </div>
     
         <div class="content-right">

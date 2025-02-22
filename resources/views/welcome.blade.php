@@ -24,6 +24,28 @@
     </header>
     
     <main>
+
+        <div class="nav">
+            @if (Route::has('login'))
+                @auth
+                    @php
+                        $user = Auth::user();
+                        if ($user->hasRole('superadmin')) {
+                            $redirectUrl = route('superadmin.dashboard');
+                        } elseif ($user->hasRole('admin')) {
+                            $redirectUrl = route('admin.dashboard');
+                        } elseif ($user->hasRole('staff')) {
+                            $redirectUrl = route('staff.dashboard');
+                        } else {
+                            $redirectUrl = route('user.dashboard'); 
+                        }
+                    @endphp
+                    <script>window.location.href = "{{ $redirectUrl }}";</script>
+                @else
+                   
+                @endauth
+            @endif
+        </div>
         <div class="content-left">
             <h1>Welcome to Our Library</h1>
             <p>Manage your books efficiently and explore a vast collection with ease.</p>

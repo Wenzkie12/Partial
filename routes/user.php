@@ -3,7 +3,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\ReservationController;
 // use App\Http\Controllers\PersonalInfoController;
-// use App\Http\Controllers\UserController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\NotificationController;
 // use App\Http\Controllers\ReservationController;
 
 
@@ -27,3 +28,14 @@ Route::get('record-tracking', function () {
 
 Route::post('/books/{book}/reserve', [ReservationController::class, 'store'])->name('books.reserve');
 Route::get('/user/tracking', [ReservationController::class, 'userTracking'])->name('user.tracking');
+
+Route::get('/management', [UserController::class, 'index'])->name('management.index');
+
+Route::get('/user/inbox', [NotificationController::class, 'index'])->name('user.inbox');
+
+Route::delete('/reservation/cancel/{id}', [ReservationController::class, 'cancelReservation'])->name('reservation.cancel');
+
+Route::get('user/personal', function () {
+    return view('user.personal');
+})->middleware(['auth', 'verified'])->name('user.personal');
+Route::get('/user/personal', [UserController::class, 'personalInfo'])->name('user.personal');
